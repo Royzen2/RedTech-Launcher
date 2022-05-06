@@ -4,6 +4,47 @@
              xmlns:local="clr-namespace:RedTech"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate" 
+                 TargetType="Button">
+            <Border Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <!-- Add only required visual state triggers -->
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"
+             Value="False">
+                    <Setter Property="Background"
+              Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"
+              Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style x:Key="{x:Type ProgressBar}" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="#FFAD16"/>
+            <Setter Property="Background" Value="#303030"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Border.CornerRadius" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Border CornerRadius="{TemplateBinding Border.CornerRadius}" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Rectangle Name="PART_Track"/>
+                                <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+                                    <Border Background="{TemplateBinding Foreground}" CornerRadius="{TemplateBinding Border.CornerRadius}" >
+
+                                    </Border>
+                                </Decorator>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
