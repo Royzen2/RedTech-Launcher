@@ -1,5 +1,7 @@
-﻿namespace RedTech
+﻿using System;
+namespace RedTech
 {
+
     class FileData
     {
         public static string NameArchiveGame = "game_zip.zip";
@@ -14,6 +16,11 @@
         public static string server_ip = "127.0.0.1";
         public static string server_port = "7777";
     }
+    class SettingsLauncher
+    {
 
+        public static int IsCache = 0;
+        public static Version VersionLauncher = null;
+    }
 
 }
